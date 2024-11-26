@@ -1,0 +1,28 @@
+class Calculator{
+//private String x="Hi";
+   public void calculator(Display display){
+      display.show(this);
+         //passing the current object
+   
+   }
+}
+   
+class Display{
+   public void show(Calculator calc){
+      System.out.println("Address->"+calc);
+
+   }
+}
+
+
+
+public class ClassNameHere {
+   public static void main(String[] args) {
+      Calculator calc=new Calculator();
+      Display display=new Display();
+      calc.calculator(display);
+      
+      
+      
+   }
+}
