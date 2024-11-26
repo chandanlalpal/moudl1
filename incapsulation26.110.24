@@ -1,0 +1,335 @@
+
+
+///incapsulation/////
+
+class BankAccount {
+    // Private fields
+    private String accountNumber;
+    private double balance;
+ 
+    // Constructor
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+ 
+    // Getter for accountNumber
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+ 
+    // Getter for balance
+    public double getBalance() {
+        return balance;
+    }
+ 
+    // Setter for balance (ensures controlled modification)
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+ 
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+}
+ 
+public class EncapsulationDemo {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("123456789", 1000);
+ 
+        // Accessing balance through getter
+        System.out.println("Account Number: " + account.getAccountNumber());
+        System.out.println("Initial Balance: " + account.getBalance());
+ 
+        // Modifying balance using controlled methods
+        account.deposit(500);
+        System.out.println("Updated Balance: " + account.getBalance());
+ 
+        account.withdraw(300);
+        System.out.println("Updated Balance: " + account.getBalance());
+ 
+        // Trying an invalid operation
+        account.withdraw(1500);
+    }
+}
+
+
+
+
+////////////////////////////complex problem///////////////////////////
+
+
+import java.util.Scanner;
+ 
+class ComplexNumbers {
+ 
+    int real;
+    int imaginary; 
+ 
+    public ComplexNumbers() {}
+ 
+    public ComplexNumbers(int r, int i)
+    {
+        this.real = r;
+        this.imaginary = i;
+    }
+ 
+    public void plus(ComplexNumbers c2)
+    {
+        this.real = this.real + c2.real;
+        this.imaginary = this.imaginary + c2.imaginary; 
+    }
+ 
+    public void print()
+    {
+        System.out.print(real + " + i" + imaginary);
+    }
+ 
+    public void multiply(ComplexNumbers c2)
+    {
+        int r = real * c2.real - imaginary * c2.imaginary; 
+        int w = real * c2.imaginary + imaginary * c2.real; 
+ 
+        this.real = r;
+        this.imaginary = w; 
+    }
+ 
+    // (a + ib) * (c + id) = (ac + i*ad + i*bc + i^2*bd) = (ac - bd + i*(ad + bc))
+}
+ 
+class Main {
+ 
+	public static void main(String args[]) {
+ 
+		Scanner sc = new Scanner(System.in);
+		int real1, imaginary1, real2, imaginary2;
+		real1 = sc.nextInt();
+		imaginary1 = sc.nextInt();
+		real2 = sc.nextInt();
+		imaginary2 = sc.nextInt();
+ 
+		ComplexNumbers c1 = new ComplexNumbers(real1, imaginary1);
+		ComplexNumbers c2 = new ComplexNumbers(real2, imaginary2);
+        int choice = sc.nextInt();
+		if (choice == 1) {
+			c1.plus(c2);
+		} else if (choice == 2) {
+			c1.multiply(c2);
+		}
+        c1.print();
+	}
+}
+
+
+
+
+//////////////////////////question 
+     
+import java.io.*;
+import java.util.*;
+ 
+//Write your code here
+class Arithmetic{
+    int add(int a, int b){
+        return a+b;
+    }
+}
+class Adder extends Arithmetic{
+ 
+}
+ 
+class Solution {
+    public static void solve() {
+        // Create a new Adder object
+        Adder a = new Adder();
+ 
+        // Print the name of the superclass on a new line
+        System.out.println("My superclass is: " + a.getClass().getSuperclass().getName());
+ 
+        // Print the result of 3 calls to Adder's `add(int,int)` method as 3
+        // space-separated integers:
+        System.out.print(a.add(10, 32) + " ");
+        System.out.print(a.add(10, 3) + " ");
+        System.out.print(a.add(10, 10) + " " + "\n");
+    }
+}
+ 
+class Main {
+ 
+    public static void main(String[] args) {
+        Solution ob = new Solution();
+        ob.solve();
+    }
+}
+
+////////abstraction////////////////////////
+
+
+<---- Abstraction ------>
+// Abstract class
+abstract class Shape {
+    String color;
+ 
+    // Constructor
+    Shape(String color) {
+        this.color = color;
+    }
+ 
+    // Abstract method (to be implemented by subclasses)
+    abstract double calculateArea();
+ 
+    // Concrete method
+    public void displayColor() {
+        System.out.println("Color: " + color);
+    }
+}
+ 
+// Subclass 1: Circle
+class Circle extends Shape {
+    double radius;
+ 
+    Circle(String color, double radius) {
+        super(color);
+        this.radius = radius;
+    }
+ 
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+ 
+// Subclass 2: Rectangle
+class Rectangle extends Shape {
+    double length, width;
+ 
+    Rectangle(String color, double length, double width) {
+        super(color);
+        this.length = length;
+        this.width = width;
+    }
+ 
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+ 
+public class AbstractionExample {
+    public static void main(String[] args) {
+        Shape circle = new Circle("Red", 7);
+        Shape rectangle = new Rectangle("Blue", 5, 3);
+ 
+        circle.displayColor();
+        System.out.println("Circle Area: " + circle.calculateArea());
+ 
+        rectangle.displayColor();
+        System.out.println("Rectangle Area: " + rectangle.calculateArea());
+    }
+}
+ 
+---------------------------------------
+// Interface
+interface Vehicle {
+    void start();  // Abstract method
+    void stop();   // Abstract method
+}
+ 
+// Class 1: Car
+class Car implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Car is starting...");
+    }
+ 
+    @Override
+    public void stop() {
+        System.out.println("Car is stopping...");
+    }
+}
+ 
+// Class 2: Bike
+class Bike implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Bike is starting...");
+    }
+ 
+    @Override
+    public void stop() {
+        System.out.println("Bike is stopping...");
+    }
+}
+ 
+public class InterfaceExample {
+    public static void main(String[] args) {
+        Vehicle car = new Car();
+        Vehicle bike = new Bike();
+ 
+        car.start();
+        car.stop();
+ 
+        bike.start();
+        bike.stop();
+    }
+}
+
+
+
+
+
+
+
+
+interface Appliance {
+    void turnOn();
+    void turnOff();
+}
+ 
+class Fan implements Appliance {
+    @Override
+    public void turnOn() {
+        System.out.println("Fan is turning on.");
+    }
+ 
+    @Override
+    public void turnOff() {
+        System.out.println("Fan is turning off.");
+    }
+}
+ 
+class Light implements Appliance {
+    @Override
+    public void turnOn() {
+        System.out.println("Light is turning on.");
+    }
+ 
+    @Override
+    public void turnOff() {
+        System.out.println("Light is turning off.");
+    }
+}
+ 
+public class ApplianceDemo {
+    public static void main(String[] args) {
+        Appliance fan = new Fan();
+        Appliance light = new Light();
+ 
+        fan.turnOn();
+        fan.turnOff();
+ 
+        light.turnOn();
+        light.turnOff();
+    }
+}
+ 
