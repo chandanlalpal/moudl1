@@ -1,0 +1,145 @@
+------------------1------------------
+ 
+// Parent class
+class Shape {
+    public void draw() {
+        System.out.println("Drawing a shape...");
+    }
+}
+ 
+// Child class 1
+class Circle extends Shape {
+    public void area() {
+        System.out.println("Calculating the area of a circle...");
+    }
+}
+ 
+// Child class 2
+class Rectangle extends Shape {
+    public void area() {
+        System.out.println("Calculating the area of a rectangle...");
+    }
+}
+ 
+public class HierarchicalInheritanceDemo {
+    public static void main(String[] args) {
+       Circle circle = new Circle();
+       Rectangle rectangle = new Rectangle();
+ 
+       circle.draw();  // Method from Shape
+       circle.area();  // Method from Circle
+ 
+        rectangle.draw(); // Method from Shape
+        rectangle.area(); // Method from Rectangle
+    }
+}
+ 
+ 
+----------------2----------------------------
+ 
+// Parent class
+class Bank {
+    public double getInterestRate() {
+        return 5.0; // Default interest rate
+    }
+}
+ 
+// Child class 1
+class SBI extends Bank {
+    @Override
+    public double getInterestRate() {
+        return 4.5; // SBI-specific interest rate
+    }
+}
+ 
+// Child class 2
+class ICICI extends Bank {
+    @Override
+    public double getInterestRate() {
+        return 6.0; // ICICI-specific interest rate
+    }
+}
+ 
+public class MethodOverridingDemo {
+    public static void main(String[] args) {
+        Bank bank = new Bank();
+        SBI sbi = new SBI();
+        ICICI icici = new ICICI();
+ 
+        System.out.println("Bank Interest Rate: " + bank.getInterestRate());
+        System.out.println("SBI Interest Rate: " + sbi.getInterestRate());
+        System.out.println("ICICI Interest Rate: " + icici.getInterestRate());
+    }
+}
+ 
+-------------3------------------------
+// Parent class
+class Parent {
+    public void display() {
+        System.out.println("This is the parent class method.");
+    }
+}
+ 
+// Child class
+class Child extends Parent {
+    @Override
+    public void display() {
+        System.out.println("This is the child class method.");
+        super.display(); // Calling parent class method
+    }
+}
+ 
+public class SuperKeywordDemo {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.display();
+    }
+}
+-------------------4------------------------
+class Vehicle {
+    String type;
+ 
+    public Vehicle(String type) {
+        this.type = type;
+        System.out.println("Parent Constructor: Vehicle Type = " + type);
+    }
+}
+ 
+class Car extends Vehicle {
+    String model;
+ 
+    public Car(String type, String model) {
+        super(type); // Calls the parent class constructor
+        this.model = model;
+        System.out.println("Child Constructor: Car Model = " + model);
+    }
+}
+ 
+public class SuperConstructorDemo {
+    public static void main(String[] args) {
+        Car car = new Car("Sedan", "Toyota Camry");
+    }
+}
+------------------------5--------------------------------'
+ 
+class Animal {
+    String name = "Animal";
+}
+ 
+class Dog extends Animal {
+    String name = "Dog";
+ 
+    public void displayNames() {
+        System.out.println("Child class name: " + name);      // Refers to the Dog class field
+        System.out.println("Parent class name: " + super.name); // Refers to the Animal class field
+    }
+}
+ 
+public class SuperFieldDemo {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.displayNames();
+    }
+}
+ 
+ 
