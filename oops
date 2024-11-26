@@ -1,0 +1,24 @@
+class Student{
+   private String name;
+   private int age;
+   //constructor 1
+   public Student(String name){
+      this(name,18);//call constructor 2
+   }
+   //constructor 2
+   public Student(String name555,int age65416){
+      this.name=name555;
+      this.age=age65416;
+   }
+   public void display(){
+      System.out.println("Name: "+this.name+ "Age: "+age);
+   }
+}
+
+public class ClassNameHere {
+   public static void main(String[] args) {
+      Student student =new Student("Chandan");
+      student.display();
+      
+   }
+}
