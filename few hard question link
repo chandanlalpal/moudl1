@@ -1,0 +1,35 @@
+https://course.acciojob.com/idle?question=9d852638-223a-456c-b351-12909a8cf8ef
+https://course.acciojob.com/idle?question=38f8ae0b-1f16-4a9c-8d27-15f13fd97653
+https://course.acciojob.com/idle?question=aa57007a-6a65-43c6-be93-932b7f5d70e8
+https://course.acciojob.com/idle?question=00d3fed6-2099-4e58-8c0a-e5473c3d6e92
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        // your code here
+      int var=10;
+      System.out.println("My num is "+var);
+    }
+}
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    
+    public static void main(String[] args) {
+           // write your code here
+           int a=1042,b=7;
+           int quo,rem;
+           quo=a/b;
+           rem=a%b;
+           System.out.println(quo+" "+rem);
+    }
+}
+
+
+
