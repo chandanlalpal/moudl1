@@ -1,0 +1,216 @@
+//single inhertiance 
+
+// Parent class
+class Animal {
+    String name;
+    int age;
+
+    // Constructor to initialize Animal class fields
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+}
+
+// Child class
+class Dog extends Animal {
+
+    // Constructor for Dog class
+    public Dog(String name, int age) {
+        // Call parent constructor
+        super(name, age);
+    }
+
+    public void bark() {
+        System.out.println(name + " is barking.");
+    }
+}
+
+public class SingleInheritanceExample1 {
+    public static void main(String[] args) {
+        // Creating an object of Dog class
+        Dog dog = new Dog("Buddy", 5);
+        dog.eat();   // Inherited from Animal class
+        dog.bark();  // Method specific to Dog class
+    }
+}
+
+
+output
+Buddy is eating.
+Buddy is barking.
+
+explanation-----------------
+
+The Dog class inherits the name and age properties from the Animal class.
+The Dog class also inherits the eat() method from the Animal class.
+A constructor in the Dog class calls the super() method to initialize the properties of the parent class Animal.
+
+
+
+///////////////////////////////mthod overriding in single inheritance 
+// Parent class
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child class
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class SingleInheritanceExample2 {
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal();
+        myAnimal.sound();  // Calls the parent class method
+
+        Dog myDog = new Dog();
+        myDog.sound();  // Calls the overridden method in Dog class
+    }
+}
+output-----
+Animal makes a sound
+Dog barks
+
+explaination------------The Dog class overrides the sound() method from the Animal class to provide a specific implementation for dogs.
+The parent Animal class has a general sound() method, but the child class Dog provides its own version.
+
+//////////////////////Constructor Inheritance in Single Inheritance
+
+// Parent class
+class Vehicle {
+    String model;
+
+    // Constructor to initialize Vehicle
+    public Vehicle(String model) {
+        this.model = model;
+    }
+
+    public void display() {
+        System.out.println("Vehicle model: " + model);
+    }
+}
+
+// Child class
+class Car extends Vehicle {
+
+    // Constructor for Car class
+    public Car(String model) {
+        // Call the constructor of Vehicle class
+        super(model);
+    }
+
+    public void drive() {
+        System.out.println("The car is driving.");
+    }
+}
+
+public class SingleInheritanceExample3 {
+    public static void main(String[] args) {
+        // Creating an object of Car class
+        Car car = new Car("Toyota");
+        car.display();  // Inherited method from Vehicle class
+        car.drive();    // Method specific to Car class
+    }
+}
+
+output---
+Vehicle model: Toyota
+The car is driving.
+
+explaintion
+The Car class calls the parent class Vehicle constructor using super(model) to initialize the model field.
+The Car class can then use the inherited display() method from the Vehicle class and also have its own drive() method.
+
+/////////////////////////////////
+
+multilevel inheritance///////////////
+
+
+// Grandparent class
+class Animal {
+    public void eat() {
+        System.out.println("Animal eats");
+    }
+}
+
+// Parent class
+class Dog extends Animal {
+    public void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Child class
+class Puppy extends Dog {
+    public void play() {
+        System.out.println("Puppy plays");
+    }
+}
+
+public class MultilevelInheritance {
+    public static void main(String[] args) {
+        Puppy puppy = new Puppy();
+        puppy.eat();    // Inherited from Animal class
+        puppy.bark();   // Inherited from Dog class
+        puppy.play();   // Method of Puppy class
+    }
+}
+
+
+output
+Animal eats
+Dog barks
+Puppy plays
+////////////////////////////////
+
+//hierarchical inheritance
+
+// Parent class
+class Animal {
+    public void eat() {
+        System.out.println("Animal eats");
+    }
+}
+
+// Child class 1
+class Dog extends Animal {
+    public void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Child class 2
+class Cat extends Animal {
+    public void meow() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class HierarchicalInheritance {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();    // Inherited from Animal class
+        dog.bark();   // Method of Dog class
+
+        Cat cat = new Cat();
+        cat.eat();    // Inherited from Animal class
+        cat.meow();   // Method of Cat class
+    }
+}
+
+output///
+Animal eats
+Dog barks
+Animal eats
+Cat meows
+
